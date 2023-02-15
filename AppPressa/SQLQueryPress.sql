@@ -192,7 +192,7 @@ use Press;
 
 select name from Publication;
 
-execute Select_from_date @dt='2023.02.15';
+--execute Select_from_date @dt='2009.1.1';
  
 
 --go
@@ -222,7 +222,7 @@ execute Select_from_date @dt='2023.02.15';
 --			   ((i.date_begin is null) and (i.date_end is null))
 --			  )
 --			;
---
+
 --
 --go
 --create procedure Select_release
