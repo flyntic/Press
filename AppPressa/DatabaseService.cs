@@ -18,6 +18,7 @@ namespace AppPressa
         {
             AllPublications,
             All_Releases,
+            All_Fields
           //  Publication,
           //  Themes,
           //  Publishing_company,
@@ -32,13 +33,20 @@ namespace AppPressa
         {
             string str = "execute Select_from_date @dt =" + " '" + DateTime.Now.ToString("yyyy-MM-dd") + "';";
             str += "execute select_release;";
-          //  str += "select name from Publication;";
-          //  str += "select name from Themes;";
-          //  str += "select name from Publishing_company;";
-          //  str += "select count from Edition;";
-          //  str += "select description from Frequency;";
-          //  str += "select distinct city from Publishing_company;";
-          //  str += "select region from Distribution_region;";
+            str += "execute  getFieldsAllPublications;";
+            for(int i=1;i<=10;i++)
+              str += $"execute  getVariablesField @i = {i};";
+           // str += "execute  getFieldsAllPublications;";
+           // str += "execute  getFieldsAllPublications;";
+           // str += "execute  getFieldsAllPublications;";
+
+            //  str += "select name from Publication;";
+            //  str += "select name from Themes;";
+            //  str += "select name from Publishing_company;";
+            //  str += "select count from Edition;";
+            //  str += "select description from Frequency;";
+            //  str += "select distinct city from Publishing_company;";
+            //  str += "select region from Distribution_region;";
             //str += "select distinct price_one from All_prices;";
 
 

@@ -17,3 +17,14 @@ C:\AnnaC#\Press\AppPressa\obj\Debug\AppPressa.csproj.GenerateResource.cache
 C:\AnnaC#\Press\AppPressa\obj\Debug\AppPressa.csproj.CoreCompileInputs.cache
 C:\AnnaC#\Press\AppPressa\obj\Debug\AppPressa.exe
 C:\AnnaC#\Press\AppPressa\obj\Debug\AppPressa.pdb
+C:\AnnaC#\AppPressa\bin\Debug\AppPressa.exe.config
+C:\AnnaC#\AppPressa\bin\Debug\AppPressa.exe
+C:\AnnaC#\AppPressa\bin\Debug\AppPressa.pdb
+C:\AnnaC#\AppPressa\obj\Debug\AppPressa.FormNewPublication.resources
+C:\AnnaC#\AppPressa\obj\Debug\AppPressa.FormPress.resources
+C:\AnnaC#\AppPressa\obj\Debug\AppPressa.Properties.Resources.resources
+C:\AnnaC#\AppPressa\obj\Debug\AppPressa.csproj.GenerateResource.cache
+C:\AnnaC#\AppPressa\obj\Debug\AppPressa.csproj.CoreCompileInputs.cache
+C:\AnnaC#\AppPressa\obj\Debug\AppPressa.exe
+C:\AnnaC#\AppPressa\obj\Debug\AppPressa.pdb
+C:\AnnaC#\AppPressa\obj\Debug\AppPressa.csproj.AssemblyReference.cache

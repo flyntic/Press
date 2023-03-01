@@ -14,7 +14,7 @@ use Press;
 --('Бюллетень','Печатное издание, выпускаемое с целью информирования целевой группы людей');
 --
 --select * from publication;
-
+--
 --create table publishing_company
 --(
 --[id] int primary key identity(1,1),
@@ -22,31 +22,63 @@ use Press;
 --[city] nvarchar(50),
 --[legal_address] text,
 --[description] text,
+--[phone] nvarchar(20),
 --[director] text
 --);
 --
 --insert publishing_company values
---('Лабиринт', 'Москва','Россия, Москва, ул. Малая Грузинская, 39','','Чудов Николай Николаевич'),
---('Просвещение', 'Москва','Россия, Москва, ул. Большая Грузинская, 93','','Чудинов Николай Николаевич'),
---('Эксмо', 'Москва','Россия, Москва, ул. Средняя Грузинская, 99','','Лудов Николай Николаевич'),
---('Воронеж', 'Воронеж','Россия, Воронеж, ул. Красных партизан, 33','','Курдов Николай Николаевич'),
---('Нижполиграф', 'Нижний Новгород','Россия, Нижний Новгород, ул. Желтого карлика, 9','','Дудов Николай Николаевич');
+--('Лабиринт', 'Москва','Россия, Москва, ул. Малая Грузинская, 39','', '(8)473-246-51-22','Чудов Николай Николаевич'),
+--('Просвещение', 'Москва','Россия, Москва, ул. Большая Грузинская, 93','','(8)473-246-51-22','Чудинов Николай Николаевич'),
+--('Эксмо', 'Москва','Россия, Москва, ул. Средняя Грузинская, 99','','(8)473-246-51-22','Лудов Николай Николаевич'),
+--('Воронеж', 'Воронеж','Россия, Воронеж, ул. Красных партизан, 33','','(8)473-246-51-22','Курдов Николай Николаевич'),
+--('Нижполиграф', 'Нижний Новгород','Россия, Нижний Новгород, ул. Желтого карлика, 9','','(8)473-246-51-22','Дудов Николай Николаевич');
 --
 --select * from publishing_company;
 
 --create table Frequency
 --( [id] int primary key identity(1,1),
---[description] nvarchar (50)
+--  [short_description] nvarchar (50),
+--  [long_description] text,
+--  [isOnDate] char ,
+--  [on_weekday] nvarchar(21),
+--  [on_numberweek] nvarchar(18),
+--  [on_day] nvarchar(93),
+--  [on_month] nvarchar(36)
 --);
 --
 --insert Frequency values
---('ежедневно'),
---('Один раз в неделю по субботам'),
---('Два раза в месяц, в первый и третий вторник'),
---('Один раз в полгода '),
---('По заказу'),
---('Один раз в месяц'),
---('Один раз в год, в декабре');
+--('Ежедневно','Выходит каждый день в году',  1,
+--                                           '1,2,3,4,5,6,7',
+--										   '1,2,3,4,5,6',
+--                                           '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31',
+--										   '1,2,3,4,5,6,7,8,9,10,11,12'),
+--('Один раз в неделю','Выходит каждую неделю по субботам',0,
+--                                           '6',--,0,0,0,0,0,0}', 
+--										   '1,2,3,4,5,6}',
+--                                           '',--0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0',
+--										   '1,2,3,4,5,6,7,8,9,10,11,12'),
+--('Два раза в месяц', 'Выходит в первый и третий вторник',0,
+--                                           '2',--0,0,0,0,0,0}',
+--										   '1,3',--,0,0,0,0}',
+--                                           '',--0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0',
+--										   '1,2,3,4,5,6,7,8,9,10,11,12'),
+--('Один раз в полгода ','Выходит 15го числа первого месяца полугодия',1,
+--                                           '',--0,0,0,0,0,0,0}', 
+--										   '',--0,0,0,0,0,0}',
+--                                           '15',--0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0',
+--										   '1,7'),--0,0,0,0,0,0,0,0,0,0}'),
+--('По заказу','Количество и частота выпусков не определена',null,null,null,null,null),
+--('Один раз в месяц','Выходит в первую пятницу месяца',0,
+--                                           '5',--,0,0,0,0,0,0}', 
+--										   '1',--0,0,0,0,0}',
+--                                           '',--0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0',
+--										   '1,2,3,4,5,6,7,8,9,10,11,12'),
+--('Один раз в год','Выходит 1го декабре',1,
+--                                           '',--0,0,0,0,0,0,0}', 
+--										   '',--0,0,0,0,0,0}',
+--                                           '1',--0,0,0,0,0,0,0,0,0,0,0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'),
+--										   '12' --'0','0','0','0','0','0','0','0','0','0','0'),
+--);
 --
 --select * from Frequency;
 
@@ -62,31 +94,69 @@ use Press;
 -- ( 200000),
 -- ( 250000); 
 --
--- select * from Edition;
-
+--select * from Edition;
+--
+--create table Regions
+--(
+--    [id] int primary key ,
+--    [name_region] nvarchar(50)
+--);
+--
+--insert Regions values
+-- ( 1,'Республика Адыгея'),
+-- ( 2,'Республика Башкорстан'),
+-- ( 36,'Воронежская область'),
+-- ( 77,'Московская область'),
+-- ( 40,'Калужская область'); 
+--
+--select * from Regions;
+--
 --create table Distribution_region
 --( [id] int primary key identity(1,1),
 --  [region] text
 --);
---
+----
 --insert Distribution_region values
 --('Россия'),
 --('Воронежская область'),
 --('Нижегородская область'),
 --('не определен');
-
+--
 --select * from Distribution_region;
-
-
+--
+--create table SetDistributionRegions
+--(
+--  [id] int primary key identity(1,1),
+--  [id_distributionregion_fk] int foreign key references Distribution_region(id),
+--  [id)region_fk] int foreign key references Regions(id)
+--);
+--
+--insert SetDistributionRegions values
+--(1,1),(1,2),(1,36),(1,77),(1,40),
+--(2,36);
+--
+--select * from SetDistributionRegions;
+--
 --create table themes
 --(id int primary key identity(1,1),
--- [name] nvarchar(50)
--- );
+-- [name] nvarchar(50),
+-- [description] text
+--  );
 --
+-- insert themes values
+--('Политика','Политические обзоры, мировые и региональные новости'),
+--('Для детей','Детские развивающие и развлекательные журналы, газеты, сказки'),
+--('Сад и огород','Огородные шпаргалки, посевные календари');
+--
+--select * from themes;
+--
+
 --create table All_Publications
 --( [id] int primary key identity(1,1),
 --  [articul] nvarchar (50),
 --  [name] nvarchar(50),
+--  [date_begin] date,
+--  [date_end] date,
 --  [id_publication_fk] int,
 --  foreign key ([id_publication_fk]) references publication (id),
 --  [id_theme_fk] int,
@@ -101,19 +171,15 @@ use Press;
 --  foreign key ([id_edition_fk]) references edition(id) 
 --);
 --
---insert themes values
---('Политика'),
---('Для детей'),
---('Сад и огород');
---
 --insert All_Publications values
---('A101','Красная заря',1,1,1,1,1,1),
---('B110','Пионерский вестник',1,1,2,3,1,1),
---('C001','Номер один',3,3,1,5,1,5),
---('D010','Ё',3,1,5,5,1,1),
---('N011','Новая',5,3,4,4,1,1),
---('J100','Гениально!',2,2,2,1,1,1);
+--('A101','Красная заря','2000.1.1',null,1,1,1,1,1,1),
+--('B110','Пионерский вестник','2000.1.1',null,1,1,2,3,1,1),
+--('C001','Номер один','2000.1.1',null,3,3,1,5,1,5),
+--('D010','Ё','2000.1.1',null,3,1,5,5,1,1),
+--('N011','Новая','2000.1.1',null,5,3,4,4,1,1),
+--('J100','Гениально!','2000.1.1',null,2,2,2,1,1,1);
 --
+--select * from All_Publications;
 --
 --create table All_Prices
 --( [id] int primary key identity(1,1),
@@ -124,10 +190,6 @@ use Press;
 --  [date_end] date
 --);
 --
---select * from All_Prices;
---select *from All_publications;
-
-
 --insert All_Prices values
 --(1, 13.75,'2000.1.1', null),
 --(1, 3.00, '2000.1.1', '2009.12.31'),
@@ -138,8 +200,9 @@ use Press;
 --(3,   100,'2020.1.1', null),
 --(4,   110,'2020.1.1', null);
 
-
-
+--select * from All_Prices;
+--
+--
 --create table All_Releases
 --([id] int primary key identity (1,1),
 -- [id_all_publications_fk] int,
@@ -147,21 +210,41 @@ use Press;
 -- [id_release] int,
 -- [date_release] date,
 -- [edition] int,
+-- [count_sale] int,
 -- [price_release] real
 --);
 --
 --
 --insert all_releases values
---(6,1,'2000.1.11',1000,13.75),
---(6,2,'2000.2.11',1000,13.75),
---(6,3,'2000.3.11',1000,13.75),
---(6,4,'2000.4.11',1000,13.75),
---(6,5,'2000.5.11',1000,13.75),
---(6,6,'2000.6.11',1000,13.75),
---(6,7,'2000.7.11',1000,13.75);
+--(6,1,'2000.1.11',1000,900,13.75),
+--(6,2,'2000.2.11',1000,990,13.75),
+--(6,3,'2000.3.11',1000,999,13.75),
+--(6,4,'2000.4.11',1000,800,13.75),
+--(6,5,'2000.5.11',1000,987,13.75),
+--(6,6,'2000.6.11',1000,892,13.75),
+--(6,7,'2000.7.11',1000,888,13.75),
+--(5,1,'2000.1.13',10000,8900,33.5),
+--(5,2,'2000.2.13',10000,8990,33.5),
+--(5,3,'2000.3.13',10000,8999,33.5),
+--(5,4,'2000.4.13',10000,8800,33.5),
+--(5,5,'2000.5.13',10000,8987,33.5),
+--(5,6,'2000.6.13',10000,8892,33.5),
+--(5,7,'2000.7.13',10000,8888,33.5),
+--(4,1, '2000.1.21',10000,9000,103),
+--(4,2, '2000.2.21',10000,9900,103),
+--(4,3, '2000.3.21',10000,9990,103),
+--(4,4, '2000.4.21',10000,8000,130),
+--(4,5, '2000.5.21',10000,9870,130),
+--(4,6, '2000.6.21',10000,8920,130),
+--(4,7, '2000.7.21',10000,8880,130),
+--(4,8, '2000.8.23',10000,8900,130),
+--(4,9, '2000.9.23',10000,8990,130),
+--(4,10,'2000.10.23',10000,8999,130),
+--(4,11,'2000.11.23',10000,8800,130),
+--(4,12,'2000.12.23',10000,8987,130);
+--
 
---select * from edition;
-
+--select * from all_releases;
 --drop procedure Select_from_date;
 --go
 --create procedure Select_from_date @dt date
@@ -170,12 +253,13 @@ use Press;
 --            p.name as 'Тип Издания',
 --            a.name as 'Название',
 --            t.name as 'Тема', 
---            f.description as 'Периодичность', 
+--            f.short_description as 'Периодичность', 
 --            c.city as 'Город', 
 --            c.name as 'Издательство', 
 --            r.region as 'Доставка', 
 --            e.count as 'Тираж', 
---            i.price_one as 'Цена на'+ @dt 
+--			a.date_begin as 'Дата первого выпуска',
+--            i.price_one as 'Цена' 
 --     from All_Publications as a, publication as p, themes as t, publishing_company as c,frequency as f, 
 --          distribution_region as r, edition as e, all_prices as i 
 --     where p.id=a.id_publication_fk and t.id=a.id_theme_fk and c.id=a.id_publishing_company_fk and 
@@ -189,59 +273,47 @@ use Press;
 --			   ((i.date_begin is null) and (i.date_end is null))
 --			  )
 --			;
+--
+--select name from Publication;
 
-select name from Publication;
-
-execute Select_from_date @dt='2023.02.15';
- 
+--execute Select_from_date @dt='2009.1.1';
+--drop procedure Select_from_date;
+--drop procedure Select_all_date;
+--go
+--declare @mindate date,@curdate date;
+--set @mindate='2000.1.1';
+--set @curdate=getdate();
 
 --go
---create procedure Select_from_date @dt date
+--create procedure Select_all_date 
 --as
+--declare @mindate date,@curdate date;
+--set @mindate='2000.1.1';
+--set @curdate=getdate();
 --
 --select a.articul as 'Артикул',
---            p.name as 'Тип Издания',
---            a.name as 'Название',
---            t.name as 'Тема', 
---            f.description as 'Периодичность', 
---            c.city as 'Город', 
---            c.name as 'Издательство', 
---            r.region as 'Доставка', 
---            e.count as 'Тираж', 
---            i.price_one  as 'Цена' 
---			from All_Publications as a, publication as p, themes as t, publishing_company as c,frequency as f, 
---          distribution_region as r, edition as e, all_prices as i 
---     where p.id=a.id_publication_fk and t.id=a.id_theme_fk and c.id=a.id_publishing_company_fk and 
+--           p.name as 'Тип Издания',
+--           a.name as 'Название',
+--           t.name as 'Тема', 
+--           f.short_description as 'Периодичность', 
+--           c.city as 'Город', 
+--           c.name as 'Издательство', 
+--           r.region as 'Доставка', 
+--           e.count as 'Тираж', 
+--			i.price_one as 'Цена',
+--			isnull(i.date_begin,@mindate) as 'С',
+--			isnull(i.date_end,@curdate) as 'До'           
+--    from All_Publications as a, publication as p, themes as t, publishing_company as c,frequency as f, 
+--         distribution_region as r, edition as e, all_prices as i 
+--    where p.id=a.id_publication_fk and t.id=a.id_theme_fk and c.id=a.id_publishing_company_fk and 
 --           f.id=a.id_frequency_fk and r.id=a.id_region_fk and e.id=a.id_edition_fk and
---		   i.id_all_publication_fk = a.id 
---		    and
---		      (
---			   ( @dt between i.date_begin and i.date_end          ) or
---			   ((@dt >= i.date_begin) and (i.date_end is null)    ) or
---			   ((@dt <= i.date_end) and (i.date_begin is null)        )  or
---			   ((i.date_begin is null) and (i.date_end is null))
---			  )
---			;
+--		   i.id_all_publication_fk = a.id 		    
+--		;
+--execute Select_release;
+
 --
---
---go
---create procedure Select_release
---as
---select a.articul as 'Артикул',
---            a.name as 'Название',
---            p.name as 'Тип издания',
---            t.name as 'Тема', 
---            c.name as 'Издательство',
---            r.id_release as 'Номер',
---			r.date_release as 'Дата выпуска',
---			r.edition as 'Продано',
---			r.price_release as 'Цена'
---			from All_Publications as a, publication as p, themes as t, publishing_company as c, All_Releases as r 
---     where p.id=a.id_publication_fk and t.id=a.id_theme_fk and c.id=a.id_publishing_company_fk and 
---            r.id_all_publications_fk=a.id
---			;
---
---drop procedure Select_release;
+
+--drop procedure select_release;
 
 --go
 --create procedure Select_release 
@@ -253,9 +325,81 @@ execute Select_from_date @dt='2023.02.15';
 --            c.name as 'Издательство',
 --            r.id_release as 'Номер',
 --			r.date_release as 'Дата выпуска',
---			r.edition as 'Продано',
+--			r.edition as 'Тираж',
+--			r.count_sale as 'Продано',
 --			r.price_release as 'Цена'
 --			from All_Publications as a, publication as p, themes as t, publishing_company as c, All_Releases as r 
 --     where p.id=a.id_publication_fk and t.id=a.id_theme_fk and c.id=a.id_publishing_company_fk and 
 --            r.id_all_publications_fk=a.id
 --			;
+exec Select_release;
+--drop  procedure isReleaseFrequencyOnDate ;
+--go
+--create procedure isReleaseFrequencyOnDate @id int, @dt date
+--as
+--select distinct a.id,f.short_description,day(@dt),concat('%,',day(@dt),',%'),f.on_day from All_Publications as a, Frequency as f
+--where f.id=a.id_frequency_fk and a.id=@id and
+--(f.on_day like '%'+concat_ws(',',day(@dt),',')+'%');
+--or f.on_day like char(day(@dt))+',%' or f.on_day like '%,'+char(day(@dt)));
+
+--and 
+--(f.on_month like '%,'+char(month(@dt))+',%' or f.on_month like char(month(@dt))+',%' or f.on_month like '%,'+char(month(@dt)))
+--and f.id=a.id_frequency_fk and a.id=@id;
+
+
+--execute isReleaseFrequencyOnDate @id=1, @dt='2000.2.2';
+--drop table DefineAllPublication;
+--create table DefineAllPublication
+-- ( [id] int identity(1,1),
+--   [name] nvarchar(50),
+--   [type] nvarchar(50),
+--   [table_name] nvarchar(50),
+--   [field] nvarchar(50),
+--   [field_fk] nvarchar(50)
+--);
+--select *from All_Publications;
+
+--insert DefineAllPublication values
+--('Артикул','string','all_publications','articul',null),
+--('Тип Издания','enum','publication','name','id_publication_fk'),
+--('Название','string','all_publiction','name',null),
+--('Тема', 'enum','themes','name','id_theme_fk'),
+--('Периодичность','enum','frequency','short_description','id_frequency_fk'),
+--('Издательство','enum','publishing_company','name','id_publishing_company_fk' ),
+--('Доставка','enum','distribution_regions','region','id_region_fk'), 
+--('Тираж', 'enum','edition','count','id_edition_fk'),
+--('Цена',  'float','all_publications','price',null),
+--('С', 'date','all_publications','date_begin',null),
+--('До', 'date', 'all_publications','date_end',null);
+
+--go 
+--create procedure getNameTable @i int
+--as
+--select d.table_name from DefineAllPublication as d where d.id=@i;
+--drop procedure getVariablesField ;
+--go
+--create procedure getVariablesField @i int
+--as
+--if(@i = 2)
+--  select name from  publication 
+--else if(@i = 4)
+--   select name from themes
+--else if(@i = 6)
+--   select name from publishing_company
+--else if(@i = 5)
+--   select short_description from Frequency
+--else if(@i = 7)
+--   select region from distribution_region
+--else if(@i = 8)
+--   select  count from Edition
+--else 
+--   select top 1 name from All_publications;
+--
+execute getVariablesField @i=7;
+--go
+--create procedure getFieldsAllPublications
+--as
+--select * from DefineAllPublication ;
+
+--execute  getFieldsAllPublications;
+--('','','')

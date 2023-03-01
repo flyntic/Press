@@ -46,11 +46,13 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.example_checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.checkBoxExample = new System.Windows.Forms.CheckBox();
+            this.example_checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -63,6 +65,7 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeight = 29;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(293, 73);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
@@ -119,7 +122,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(-2, 710);
+            this.button3.Location = new System.Drawing.Point(-3, 710);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(263, 28);
@@ -155,7 +158,7 @@
             this.checkedListBox2.Location = new System.Drawing.Point(20, 410);
             this.checkedListBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(261, 157);
+            this.checkedListBox2.Size = new System.Drawing.Size(261, 140);
             this.checkedListBox2.TabIndex = 16;
             // 
             // button15
@@ -250,9 +253,21 @@
             this.panel1.Controls.Add(this.checkBoxExample);
             this.panel1.Controls.Add(this.example_checkedListBox);
             this.panel1.Location = new System.Drawing.Point(12, 73);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(266, 734);
+            this.panel1.Size = new System.Drawing.Size(267, 734);
             this.panel1.TabIndex = 31;
+            // 
+            // checkBoxExample
+            // 
+            this.checkBoxExample.Location = new System.Drawing.Point(20, 4);
+            this.checkBoxExample.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxExample.Name = "checkBoxExample";
+            this.checkBoxExample.Size = new System.Drawing.Size(228, 30);
+            this.checkBoxExample.TabIndex = 31;
+            this.checkBoxExample.Text = "checkBox2";
+            this.checkBoxExample.UseVisualStyleBackColor = true;
+            this.checkBoxExample.Visible = false;
             // 
             // example_checkedListBox
             // 
@@ -263,37 +278,29 @@
             "1",
             "2",
             "3"});
-            this.example_checkedListBox.Location = new System.Drawing.Point(38, 42);
+            this.example_checkedListBox.Location = new System.Drawing.Point(39, 36);
+            this.example_checkedListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.example_checkedListBox.Name = "example_checkedListBox";
-            this.example_checkedListBox.Size = new System.Drawing.Size(195, 85);
-            this.example_checkedListBox.TabIndex = 30;
+            this.example_checkedListBox.Size = new System.Drawing.Size(195, 68);
+            this.example_checkedListBox.TabIndex = 32;
             this.example_checkedListBox.Visible = false;
-            this.example_checkedListBox.SelectedIndexChanged += new System.EventHandler(this.checkedListBox3_SelectedIndexChanged);
-            // 
-            // checkBoxExample
-            // 
-            this.checkBoxExample.Location = new System.Drawing.Point(18, 10);
-            this.checkBoxExample.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxExample.Name = "checkBoxExample";
-            this.checkBoxExample.Size = new System.Drawing.Size(228, 30);
-            this.checkBoxExample.TabIndex = 29;
-            this.checkBoxExample.Text = "checkBox2";
-            this.checkBoxExample.UseVisualStyleBackColor = true;
-            this.checkBoxExample.Visible = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 813);
+            this.button1.Location = new System.Drawing.Point(12, 815);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(265, 23);
+            this.button1.Size = new System.Drawing.Size(265, 28);
             this.button1.TabIndex = 32;
-            this.button1.Text = "Сохранить фильтр";
+            this.button1.Text = "Применить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(13, 38);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(265, 24);
             this.comboBox2.TabIndex = 33;
@@ -301,17 +308,39 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 13);
+            this.label2.Location = new System.Drawing.Point(13, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 34;
             this.label2.Text = "Фильтры";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(12, 842);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(265, 31);
+            this.button4.TabIndex = 35;
+            this.button4.Text = "Сохранить";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(644, 34);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 36;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // FormPress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 850);
+            this.ClientSize = new System.Drawing.Size(1924, 928);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button1);
@@ -356,11 +385,13 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox checkBoxExample;
-        private System.Windows.Forms.CheckedListBox example_checkedListBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.CheckBox checkBoxExample;
+        private System.Windows.Forms.CheckedListBox example_checkedListBox;
+        private System.Windows.Forms.Button button5;
     }
 }
 

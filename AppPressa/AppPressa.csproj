@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseService.cs" />
+    <Compile Include="FormNewPublication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewPublication.Designer.cs">
+      <DependentUpon>FormNewPublication.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormNewPublication.resx">
+      <DependentUpon>FormNewPublication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPress.resx">
       <DependentUpon>FormPress.cs</DependentUpon>
     </EmbeddedResource>
