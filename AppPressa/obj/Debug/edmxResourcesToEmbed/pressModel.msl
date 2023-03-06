@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pressDBModelStoreContainer" CdmEntityContainer="pressDBEntities">
+    <EntitySetMapping Name="All_Publications">
+      <EntityTypeMapping TypeName="pressDBModel.All_Publications">
+        <MappingFragment StoreEntitySet="All_Publications">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="articul" ColumnName="articul" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_publication_fk" ColumnName="id_publication_fk" />
+          <ScalarProperty Name="id_theme_fk" ColumnName="id_theme_fk" />
+          <ScalarProperty Name="id_publishing_company_fk" ColumnName="id_publishing_company_fk" />
+          <ScalarProperty Name="id_frequency_fk" ColumnName="id_frequency_fk" />
+          <ScalarProperty Name="id_region_fk" ColumnName="id_region_fk" />
+          <ScalarProperty Name="id_edition_fk" ColumnName="id_edition_fk" />
+          <ScalarProperty Name="begin_date" ColumnName="begin_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="All_Releases">
+      <EntityTypeMapping TypeName="pressDBModel.All_Releases">
+        <MappingFragment StoreEntitySet="All_Releases">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_all_publications_fk" ColumnName="id_all_publications_fk" />
+          <ScalarProperty Name="id_release" ColumnName="id_release" />
+          <ScalarProperty Name="date_release" ColumnName="date_release" />
+          <ScalarProperty Name="edition" ColumnName="edition" />
+          <ScalarProperty Name="count_sale" ColumnName="count_sale" />
+          <ScalarProperty Name="price_release" ColumnName="price_release" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Distribution_region">
+      <EntityTypeMapping TypeName="pressDBModel.Distribution_region">
+        <MappingFragment StoreEntitySet="Distribution_region">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="region" ColumnName="region" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Edition">
+      <EntityTypeMapping TypeName="pressDBModel.Edition">
+        <MappingFragment StoreEntitySet="Edition">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Frequency">
+      <EntityTypeMapping TypeName="pressDBModel.Frequency">
+        <MappingFragment StoreEntitySet="Frequency">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="short_description" ColumnName="short_description" />
+          <ScalarProperty Name="long_description" ColumnName="long_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="publication">
+      <EntityTypeMapping TypeName="pressDBModel.publication">
+        <MappingFragment StoreEntitySet="publication">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="publishing_company">
+      <EntityTypeMapping TypeName="pressDBModel.publishing_company">
+        <MappingFragment StoreEntitySet="publishing_company">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="legal_address" ColumnName="legal_address" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="director" ColumnName="director" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="themes">
+      <EntityTypeMapping TypeName="pressDBModel.themes">
+        <MappingFragment StoreEntitySet="themes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DefineAllPublication">
+      <EntityTypeMapping TypeName="pressDBModel.DefineAllPublication">
+        <MappingFragment StoreEntitySet="DefineAllPublication">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DefineAllRelease">
+      <EntityTypeMapping TypeName="pressDBModel.DefineAllRelease">
+        <MappingFragment StoreEntitySet="DefineAllRelease">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="description_all_publications" FunctionName="pressDBModel.Store.description_all_publications">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="pressDBModel.description_all_publications_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Артикул" ColumnName="Артикул" />
+          <ScalarProperty Name="Тип_Издания" ColumnName="Тип Издания" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Тема" ColumnName="Тема" />
+          <ScalarProperty Name="Периодичность" ColumnName="Периодичность" />
+          <ScalarProperty Name="Город" ColumnName="Город" />
+          <ScalarProperty Name="Издательство" ColumnName="Издательство" />
+          <ScalarProperty Name="Доставка" ColumnName="Доставка" />
+          <ScalarProperty Name="Тираж" ColumnName="Тираж" />
+          <ScalarProperty Name="Начало_печати" ColumnName="Начало печати" />
+          <ScalarProperty Name="Конец_печати" ColumnName="Конец печати" />
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Description_All_Releases" FunctionName="pressDBModel.Store.Description_All_Releases">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="pressDBModel.Description_All_Releases_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Артикул" ColumnName="Артикул" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Тип_издания" ColumnName="Тип издания" />
+          <ScalarProperty Name="Тема" ColumnName="Тема" />
+          <ScalarProperty Name="Издательство" ColumnName="Издательство" />
+          <ScalarProperty Name="Номер" ColumnName="Номер" />
+          <ScalarProperty Name="Дата_выпуска" ColumnName="Дата выпуска" />
+          <ScalarProperty Name="Тираж" ColumnName="Тираж" />
+          <ScalarProperty Name="Продано" ColumnName="Продано" />
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2968C58E-0234-42D8-8EAD-09929EA1FCBD}</ProjectGuid>
+    <ProjectGuid>{89970218-7F14-4B72-B45B-8F12DA597720}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>AppPressa</RootNamespace>
     <AssemblyName>AppPressa</AssemblyName>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +36,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,26 +58,121 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseService.cs" />
-    <Compile Include="FormNewPublication.cs">
+    <Compile Include="All_Publications.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="All_Releases.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBService\DatabaseService.cs" />
+    <Compile Include="DBService\DBService.cs" />
+    <Compile Include="DefineAllPublication.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DefineAllRelease.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="description_all_publications_Result.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Description_All_Releases_Result.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution_region.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edition.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Filter\PartFilter.cs" />
+    <Compile Include="DBService\IDBService.cs" />
+    <Compile Include="DBService\IEntity.cs" />
+    <Compile Include="Filter\DateElement.cs" />
+    <Compile Include="Filter\EnumElement.cs" />
+    <Compile Include="Filter\FilterElement.cs" />
+    <Compile Include="Filter\RealElement.cs" />
+    <Compile Include="Filter\SetElements.cs" />
+    <Compile Include="Filter\SetFilters.cs" />
+    <Compile Include="Filter\StringElement.cs" />
+    <Compile Include="Forms\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNewPublication.Designer.cs">
-      <DependentUpon>FormNewPublication.cs</DependentUpon>
+    <Compile Include="Forms\FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPress.cs">
+    <Compile Include="Forms\FormPress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPress.Designer.cs">
+    <Compile Include="Forms\FormPress.Designer.cs">
       <DependentUpon>FormPress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LightTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LightTableForm.Designer.cs">
+      <DependentUpon>LightTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PublicationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PublicationForm.Designer.cs">
+      <DependentUpon>PublicationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReleaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReleaseForm.Designer.cs">
+      <DependentUpon>ReleaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frequency.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\FilterPanel.cs" />
+    <Compile Include="pressModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pressModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pressModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pressModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pressModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormNewPublication.resx">
-      <DependentUpon>FormNewPublication.cs</DependentUpon>
+    <Compile Include="publication.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="publishing_company.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SerializeService\BinarrySerializeFormat.cs" />
+    <Compile Include="SerializeService\ISerialize.cs" />
+    <Compile Include="SerializeService\ISerliazeType.cs" />
+    <Compile Include="SerializeService\SerializeService.cs" />
+    <Compile Include="SerializeService\XmlSerializeFormat.cs" />
+    <Compile Include="themes.cs">
+      <DependentUpon>pressModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPress.resx">
+    <EmbeddedResource Include="Forms\FormPress.resx">
       <DependentUpon>FormPress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LightTableForm.resx">
+      <DependentUpon>LightTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PublicationForm.resx">
+      <DependentUpon>PublicationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReleaseForm.resx">
+      <DependentUpon>ReleaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,6 +183,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
+    <EntityDeploy Include="pressModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>pressModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="pressModel.edmx.diagram">
+      <DependentUpon>pressModel.edmx</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,5 +204,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="pressModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>pressModel.edmx</DependentUpon>
+      <LastGenOutput>pressModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="pressModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>pressModel.edmx</DependentUpon>
+      <LastGenOutput>pressModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

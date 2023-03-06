@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pressDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="All_Publications">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="articul" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_publication_fk" Type="Int32" />
+    <Property Name="id_theme_fk" Type="Int32" />
+    <Property Name="id_publishing_company_fk" Type="Int32" />
+    <Property Name="id_frequency_fk" Type="Int32" />
+    <Property Name="id_region_fk" Type="Int32" />
+    <Property Name="id_edition_fk" Type="Int32" />
+    <Property Name="begin_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="price" Type="Single" />
+    <NavigationProperty Name="Edition" Relationship="Self.FK__All_Publi__id_ed__4D94879B" FromRole="All_Publications" ToRole="Edition" />
+    <NavigationProperty Name="Frequency" Relationship="Self.FK__All_Publi__id_fr__4BAC3F29" FromRole="All_Publications" ToRole="Frequency" />
+    <NavigationProperty Name="publication" Relationship="Self.FK__All_Publi__id_pu__48CFD27E" FromRole="All_Publications" ToRole="publication" />
+    <NavigationProperty Name="publishing_company" Relationship="Self.FK__All_Publi__id_pu__4AB81AF0" FromRole="All_Publications" ToRole="publishing_company" />
+    <NavigationProperty Name="Distribution_region" Relationship="Self.FK__All_Publi__id_re__4CA06362" FromRole="All_Publications" ToRole="Distribution_region" />
+    <NavigationProperty Name="themes" Relationship="Self.FK__All_Publi__id_th__49C3F6B7" FromRole="All_Publications" ToRole="themes" />
+    <NavigationProperty Name="All_Releases" Relationship="Self.FK__All_Relea__id_al__5070F446" FromRole="All_Publications" ToRole="All_Releases" />
+  </EntityType>
+  <EntityType Name="All_Releases">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_all_publications_fk" Type="Int32" />
+    <Property Name="id_release" Type="Int32" />
+    <Property Name="date_release" Type="DateTime" Precision="0" />
+    <Property Name="edition" Type="Int32" />
+    <Property Name="count_sale" Type="Int32" />
+    <Property Name="price_release" Type="Single" />
+    <NavigationProperty Name="All_Publications" Relationship="Self.FK__All_Relea__id_al__5070F446" FromRole="All_Releases" ToRole="All_Publications" />
+  </EntityType>
+  <EntityType Name="Distribution_region">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="All_Publications" Relationship="Self.FK__All_Publi__id_re__4CA06362" FromRole="Distribution_region" ToRole="All_Publications" />
+  </EntityType>
+  <EntityType Name="Edition">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="count" Type="Int32" />
+    <NavigationProperty Name="All_Publications" Relationship="Self.FK__All_Publi__id_ed__4D94879B" FromRole="Edition" ToRole="All_Publications" />
+  </EntityType>
+  <EntityType Name="Frequency">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="short_description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="long_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="All_Publications" Relationship="Self.FK__All_Publi__id_fr__4BAC3F29" FromRole="Frequency" ToRole="All_Publications" />
+  </EntityType>
+  <EntityType Name="publication">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="All_Publications" Relationship="Self.FK__All_Publi__id_pu__48CFD27E" FromRole="publication" ToRole="All_Publications" />
+  </EntityType>
+  <EntityType Name="publishing_company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="legal_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="director" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="All_Publications" Relationship="Self.FK__All_Publi__id_pu__4AB81AF0" FromRole="publishing_company" ToRole="All_Publications" />
+  </EntityType>
+  <EntityType Name="themes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="All_Publications" Relationship="Self.FK__All_Publi__id_th__49C3F6B7" FromRole="themes" ToRole="All_Publications" />
+  </EntityType>
+  <EntityType Name="DefineAllPublication">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DefineAllRelease">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__All_Publi__id_ed__4D94879B">
+    <End Role="Edition" Type="Self.Edition" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Edition">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_edition_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_fr__4BAC3F29">
+    <End Role="Frequency" Type="Self.Frequency" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Frequency">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_frequency_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_pu__48CFD27E">
+    <End Role="publication" Type="Self.publication" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="publication">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_publication_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_pu__4AB81AF0">
+    <End Role="publishing_company" Type="Self.publishing_company" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="publishing_company">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_publishing_company_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_re__4CA06362">
+    <End Role="Distribution_region" Type="Self.Distribution_region" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distribution_region">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_region_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_th__49C3F6B7">
+    <End Role="themes" Type="Self.themes" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="themes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_theme_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Relea__id_al__5070F446">
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="0..1" />
+    <End Role="All_Releases" Type="Self.All_Releases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="All_Publications">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Releases">
+        <PropertyRef Name="id_all_publications_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pressDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="All_Publications" EntityType="Self.All_Publications" />
+    <EntitySet Name="All_Releases" EntityType="Self.All_Releases" />
+    <EntitySet Name="Distribution_region" EntityType="Self.Distribution_region" />
+    <EntitySet Name="Edition" EntityType="Self.Edition" />
+    <EntitySet Name="Frequency" EntityType="Self.Frequency" />
+    <EntitySet Name="publication" EntityType="Self.publication" />
+    <EntitySet Name="publishing_company" EntityType="Self.publishing_company" />
+    <EntitySet Name="themes" EntityType="Self.themes" />
+    <EntitySet Name="DefineAllPublication" EntityType="Self.DefineAllPublication" />
+    <EntitySet Name="DefineAllRelease" EntityType="Self.DefineAllRelease" />
+    <AssociationSet Name="FK__All_Publi__id_ed__4D94879B" Association="Self.FK__All_Publi__id_ed__4D94879B">
+      <End Role="Edition" EntitySet="Edition" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_fr__4BAC3F29" Association="Self.FK__All_Publi__id_fr__4BAC3F29">
+      <End Role="Frequency" EntitySet="Frequency" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_pu__48CFD27E" Association="Self.FK__All_Publi__id_pu__48CFD27E">
+      <End Role="publication" EntitySet="publication" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_pu__4AB81AF0" Association="Self.FK__All_Publi__id_pu__4AB81AF0">
+      <End Role="publishing_company" EntitySet="publishing_company" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_re__4CA06362" Association="Self.FK__All_Publi__id_re__4CA06362">
+      <End Role="Distribution_region" EntitySet="Distribution_region" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_th__49C3F6B7" Association="Self.FK__All_Publi__id_th__49C3F6B7">
+      <End Role="themes" EntitySet="themes" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Relea__id_al__5070F446" Association="Self.FK__All_Relea__id_al__5070F446">
+      <End Role="All_Publications" EntitySet="All_Publications" />
+      <End Role="All_Releases" EntitySet="All_Releases" />
+    </AssociationSet>
+    <FunctionImport Name="description_all_publications" ReturnType="Collection(pressDBModel.description_all_publications_Result)" />
+    <FunctionImport Name="Description_All_Releases" ReturnType="Collection(pressDBModel.Description_All_Releases_Result)" />
+  </EntityContainer>
+  <ComplexType Name="description_all_publications_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Артикул" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Тип_Издания" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Название" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Тема" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Периодичность" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Город" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Издательство" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Доставка" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Тираж" Nullable="true" />
+    <Property Type="DateTime" Name="Начало_печати" Nullable="true" />
+    <Property Type="DateTime" Name="Конец_печати" Nullable="true" />
+    <Property Type="Single" Name="Цена" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Description_All_Releases_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Артикул" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Название" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Тип_издания" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Тема" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Издательство" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Номер" Nullable="true" />
+    <Property Type="DateTime" Name="Дата_выпуска" Nullable="true" />
+    <Property Type="Int32" Name="Тираж" Nullable="true" />
+    <Property Type="Int32" Name="Продано" Nullable="true" />
+    <Property Type="Single" Name="Цена" Nullable="true" />
+  </ComplexType>
+</Schema>

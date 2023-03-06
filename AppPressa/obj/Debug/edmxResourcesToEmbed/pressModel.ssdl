@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pressDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="All_Publications">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="articul" Type="nvarchar" MaxLength="50" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_publication_fk" Type="int" />
+    <Property Name="id_theme_fk" Type="int" />
+    <Property Name="id_publishing_company_fk" Type="int" />
+    <Property Name="id_frequency_fk" Type="int" />
+    <Property Name="id_region_fk" Type="int" />
+    <Property Name="id_edition_fk" Type="int" />
+    <Property Name="begin_date" Type="date" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="price" Type="real" />
+  </EntityType>
+  <EntityType Name="All_Releases">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_all_publications_fk" Type="int" />
+    <Property Name="id_release" Type="int" />
+    <Property Name="date_release" Type="date" />
+    <Property Name="edition" Type="int" />
+    <Property Name="count_sale" Type="int" />
+    <Property Name="price_release" Type="real" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'pressDB.dbo.DefineAllPublication' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DefineAllPublication">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'pressDB.dbo.DefineAllRelease' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DefineAllRelease">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Distribution_region">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Edition">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="count" Type="int" />
+  </EntityType>
+  <EntityType Name="Frequency">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="short_description" Type="nvarchar" MaxLength="50" />
+    <Property Name="long_description" Type="text" />
+  </EntityType>
+  <EntityType Name="publication">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="description" Type="text" />
+  </EntityType>
+  <EntityType Name="publishing_company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" />
+    <Property Name="legal_address" Type="text" />
+    <Property Name="description" Type="text" />
+    <Property Name="phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="director" Type="text" />
+  </EntityType>
+  <EntityType Name="themes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="description" Type="text" />
+  </EntityType>
+  <Association Name="FK__All_Publi__id_ed__4D94879B">
+    <End Role="Edition" Type="Self.Edition" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Edition">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_edition_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_fr__4BAC3F29">
+    <End Role="Frequency" Type="Self.Frequency" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Frequency">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_frequency_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_pu__48CFD27E">
+    <End Role="publication" Type="Self.publication" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="publication">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_publication_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_pu__4AB81AF0">
+    <End Role="publishing_company" Type="Self.publishing_company" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="publishing_company">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_publishing_company_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_re__4CA06362">
+    <End Role="Distribution_region" Type="Self.Distribution_region" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distribution_region">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_region_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Publi__id_th__49C3F6B7">
+    <End Role="themes" Type="Self.themes" Multiplicity="0..1" />
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="themes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Publications">
+        <PropertyRef Name="id_theme_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__All_Relea__id_al__5070F446">
+    <End Role="All_Publications" Type="Self.All_Publications" Multiplicity="0..1" />
+    <End Role="All_Releases" Type="Self.All_Releases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="All_Publications">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="All_Releases">
+        <PropertyRef Name="id_all_publications_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="description_all_publications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Description_All_Releases" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="pressDBModelStoreContainer">
+    <EntitySet Name="All_Publications" EntityType="Self.All_Publications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="All_Releases" EntityType="Self.All_Releases" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Distribution_region" EntityType="Self.Distribution_region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Edition" EntityType="Self.Edition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Frequency" EntityType="Self.Frequency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="publication" EntityType="Self.publication" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="publishing_company" EntityType="Self.publishing_company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="themes" EntityType="Self.themes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DefineAllPublication" EntityType="Self.DefineAllPublication" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DefineAllPublication].[id] AS [id], 
+    [DefineAllPublication].[name] AS [name], 
+    [DefineAllPublication].[type] AS [type]
+    FROM [dbo].[DefineAllPublication] AS [DefineAllPublication]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DefineAllRelease" EntityType="Self.DefineAllRelease" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DefineAllRelease].[id] AS [id], 
+    [DefineAllRelease].[name] AS [name], 
+    [DefineAllRelease].[type] AS [type]
+    FROM [dbo].[DefineAllRelease] AS [DefineAllRelease]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__All_Publi__id_ed__4D94879B" Association="Self.FK__All_Publi__id_ed__4D94879B">
+      <End Role="Edition" EntitySet="Edition" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_fr__4BAC3F29" Association="Self.FK__All_Publi__id_fr__4BAC3F29">
+      <End Role="Frequency" EntitySet="Frequency" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_pu__48CFD27E" Association="Self.FK__All_Publi__id_pu__48CFD27E">
+      <End Role="publication" EntitySet="publication" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_pu__4AB81AF0" Association="Self.FK__All_Publi__id_pu__4AB81AF0">
+      <End Role="publishing_company" EntitySet="publishing_company" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_re__4CA06362" Association="Self.FK__All_Publi__id_re__4CA06362">
+      <End Role="Distribution_region" EntitySet="Distribution_region" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Publi__id_th__49C3F6B7" Association="Self.FK__All_Publi__id_th__49C3F6B7">
+      <End Role="themes" EntitySet="themes" />
+      <End Role="All_Publications" EntitySet="All_Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__All_Relea__id_al__5070F446" Association="Self.FK__All_Relea__id_al__5070F446">
+      <End Role="All_Publications" EntitySet="All_Publications" />
+      <End Role="All_Releases" EntitySet="All_Releases" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="00a82a03bc5e40eaab7b2d06aed6b095" Name="Diagram1">
+        <EntityTypeShape EntityType="pressDBModel.All_Publications" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="pressDBModel.All_Releases" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pressDBModel.Distribution_region" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pressDBModel.Edition" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pressDBModel.Frequency" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pressDBModel.publication" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pressDBModel.publishing_company" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pressDBModel.themes" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pressDBModel.DefineAllPublication" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pressDBModel.DefineAllRelease" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="pressDBModel.FK__All_Publi__id_ed__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="pressDBModel.FK__All_Publi__id_fr__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="pressDBModel.FK__All_Publi__id_pu__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="pressDBModel.FK__All_Publi__id_pu__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="pressDBModel.FK__All_Publi__id_re__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="pressDBModel.FK__All_Publi__id_th__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="pressDBModel.FK__All_Relea__id_al__5070F446" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
